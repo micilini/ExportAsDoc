@@ -109,4 +109,12 @@ var result = await Task.Run(() =>
 
 ---
 
-For further questions or issues, feel free to open an issue in the repository.
+## Contributing
+
+Feel free to open issues or submit pull requests to improve the script.
+
+---
+
+## License
+
+This script is open-source and available under the MIT License.
