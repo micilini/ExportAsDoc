@@ -40,6 +40,12 @@
    - The `--onefile` flag ensures the executable is a single file.
    - The `--name` flag specifies the output executable's name.
 
+   If the code below don't work, try to create the executable with PIL support:
+
+   ```bash
+   pyinstaller --onefile --hidden-import=PIL --hidden-import=PIL._imaging --hidden-import=PIL.Image ExportAsDoc.py
+   ```
+
 3. **Locate the Executable**:
    After running the above command, the `ExportAsDoc.exe` file will be available in the `dist` folder.
 
@@ -55,6 +61,15 @@
 1. Save the JSON data to a local file.
 2. Pass the file path as an argument when invoking the executable.
 3. Capture the generated `.docx` file output from the standard output.
+
+### Executing the script with terminal
+You can execute the executable with terminal (cmd, git bash and others). Inside the ```dist``` folder, you will find ```ExportAsDoc.exe``` with ```note.json```, navigate with your terminal to that folder, and then run the following command:
+
+```bash
+./ExportAsDoc.exe note.json > result.docx
+```
+
+Finally, a file named ```result.docx``` will be created in the same folder.
 
 ---
 
