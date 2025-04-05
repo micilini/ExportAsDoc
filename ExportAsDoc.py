@@ -315,13 +315,21 @@ def json_to_docx(json_file, output_file):
     clean_duplicate_links(doc)
 
     doc.save(output_file)
-    print(f"Document saved to {output_file}")
 
 # for test
-""" def save_docx_stream_to_file(docx_stream: bytes, output_path: str):
-    with open(output_path, "wb") as docx_file:
-        docx_file.write(docx_stream)
-    print(f"DOCX file saved successfully to {output_path}")  """
+def save_docx_stream_to_file(docx_stream, filename="ExportedNote.docx"):
+    """
+    Save the DOCX binary stream to a file in the local AppData directory.
+    """
+    local_appdata_path = os.path.join(os.getenv("LOCALAPPDATA"), "MinimalTextEditorLite")
+    os.makedirs(local_appdata_path, exist_ok=True)
+
+    file_path = os.path.join(local_appdata_path, filename)
+
+    with open(file_path, 'wb') as f:
+        f.write(docx_stream)
+
+
 # Run the script
 # Define a new function to process arguments
 def process_arguments():
@@ -353,9 +361,8 @@ def process_arguments():
 
         # Output the binary DOCX data to stdout
         sys.stdout.buffer.write(output.getvalue())
-        #for test
-        #save_docx_stream_to_file(output.getvalue(),"newtestBigPhoto.docx")
-
+        # Save Doc in Temporary File
+        #save_docx_stream_to_file(output.getvalue(),"ExportedNote.docx")
 
     except Exception as e:
         print(f"Error: {e}")
